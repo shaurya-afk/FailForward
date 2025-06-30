@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
+import HealthGuard from "@/components/HealthGuard";
 
 const crimsonPro = Crimson_Pro({
   variable: "--font-crimson-pro",
@@ -24,7 +25,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "DeadDocs - Learn from Startup Failures",
+  title: "FailForward - Learn from Startup Failures",
   description: "Share your story, help others avoid the same mistakes. We believe every setback is a stepping stone in disguise.",
 };
 
@@ -39,13 +40,13 @@ export default function RootLayout({
         baseTheme: undefined,
         variables: {
           colorPrimary: '#f59e0b',
-          colorText: '#1c1c1c',      
+          colorText: '#1c1c1c',
           fontFamily: 'var(--font-source-sans-pro)',
           fontFamilyButtons: 'var(--font-source-sans-pro)',
         },
         elements: {
           card: {
-            backgroundColor: '#fefef9', 
+            backgroundColor: '#fefef9',
             boxShadow: '0 4px 14px 0 rgb(0 0 0 / 10%)',
             border: '1px solid #e2e8f0'
           },
@@ -55,7 +56,11 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${crimsonPro.variable} ${sourceSans3.variable} ${caveat.variable} font-sans bg-background-cream text-primary`}>
           <Header />
-          <main>{children}</main> {/* This is where page content will go */}
+          <main>
+            <HealthGuard>
+              {children}
+            </HealthGuard>
+          </main>
           <Footer />
         </body>
       </html>

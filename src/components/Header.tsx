@@ -7,12 +7,15 @@ export default function Header() {
     <header className="w-full bg-background-cream border-b border-gray-200">
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/" className="text-xl font-serif font-bold text-primary">
-          FailureToLesson
+          FailForward
         </Link>
         <div className="flex items-center space-x-4">
           {/* This will show only when the user is logged IN */}
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
+            <Link href="/my-stories" className="px-4 py-2 text-sm font-medium text-primary hover:text-accent-purple">
+              My Stories
+            </Link>
           </SignedIn>
 
           {/* This will show only when the user is logged OUT */}
