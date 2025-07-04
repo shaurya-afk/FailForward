@@ -17,10 +17,12 @@ export type StoryRequest = {
   storyTitle: string;
   industry: string;
   previewText: string;
+  helpfulVotes: number;
+  commentCount: number;
 };
 
 export type StoryResponse = {
-  id: string;
+  id: number;
   userId: string;
   founderName: string;
   isAnonymous: boolean;

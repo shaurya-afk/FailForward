@@ -3,6 +3,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import "tailwindcss"; */
+
+@theme inline {
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s) linear infinite;
+    animation-direction: var(--animation-direction, forwards);
+  }
+}
+
+
 /* Custom Animations */
 @keyframes fadeInUp {
   from {
@@ -126,4 +147,9 @@
 
 .animation-delay-500 {
   animation-delay: 0.5s;
+}
+
+body {
+  background: #000 !important;
+  overflow-x: hidden !important;
 }

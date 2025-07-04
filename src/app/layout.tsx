@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Crimson_Pro, Source_Sans_3, Caveat } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Footer } from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import HealthGuard from "@/components/HealthGuard";
+import { NavBar } from "@/components/NavBar";
 
 const crimsonPro = Crimson_Pro({
   variable: "--font-crimson-pro",
@@ -54,8 +54,10 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <body className={`${crimsonPro.variable} ${sourceSans3.variable} ${caveat.variable} font-sans bg-background-cream text-primary`}>
-          <Header />
+        <body className={`${crimsonPro.variable} ${sourceSans3.variable} ${caveat.variable} font-sans bg-background-black text-primary`}>
+          <div className="gap-8">
+            <NavBar />
+          </div>
           <main>
             <HealthGuard>
               {children}

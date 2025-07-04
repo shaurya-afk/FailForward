@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes:{
+        scroll:{
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        scroll: 'scroll var(--animation-duration, 40s) linear infinite',
+      },
       // Here we are extending the default theme with our custom design system.
       colors: {
         // This is your custom color palette.
@@ -38,6 +47,7 @@ const config: Config = {
       },
     },
   },
+  safelist: ['animate-scroll'],
   plugins: [],
 };
 export default config; 

@@ -1,24 +1,65 @@
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
+"use client";
+import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
-import { dummyStories } from "@/data/stories";
 import StoryCard from "@/components/StoryCard";
+import { getStoriesByUserId, deleteStory } from "@/data/api";
+import { Story } from "@/types/story";
+import { useEffect, useState } from "react";
+import Loading from "@/components/Loading";
 
-export default async function MyStoriesPage() {
+
+export default function MyStoriesPage() {
+
+  const [stories, setStories] = useState<Story[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+
   // 1. Get user's auth state
-  const { userId } = await auth();
-  if (!userId) {
-    // Redirect non-logged-in users
-    redirect("/sign-in");
+  const { userId } = useAuth();
+
+  const fetchStories = () => {
+    if(!userId) return;
+    setLoading(true);
+    getStoriesByUserId(userId)
+    .then(setStories)
+    .catch(setError)
+    .finally(() => setLoading(false));
   }
 
-  // 2. Filter stories to get only those by the current user
-  const userStories = dummyStories.filter(story => story.userId === userId);
+  useEffect(() => {
+    if(!userId) return;
+    getStoriesByUserId(userId)
+    .then(setStories)
+    .catch(setError)
+    .finally(() => setLoading(false));
+  }, [userId]);
+
+  // Add a delete handler (to be implemented)
+  const handleDelete = (id: number) => {
+    deleteStory(id)
+    .then(() => {
+      setStories(stories.filter(story => story.id !== id));
+    })
+    .catch(setError)
+    .finally(() => setLoading(false));
+  };
+
+  // Update only the changed story in the stories array
+  const handleStoryUpdate = (updatedStory: Story) => {
+    setStories(prevStories =>
+      prevStories.map(story =>
+        story.id === updatedStory.id ? updatedStory : story
+      )
+    );
+  };
+
+  if(loading) return <Loading />;
 
   return (
     <div className="container mx-auto px-6 py-12">
       {/* 3. Conditional Rendering Logic */}
-      {userStories.length === 0 ? (
+      {stories.length === 0 ? (
         // STATE A: User has NO stories
         <div className="text-center">
           <h1 className="text-4xl font-serif font-bold text-primary mb-4">
@@ -49,10 +90,19 @@ export default async function MyStoriesPage() {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {userStories.map(story => (
-              <div key={story.id}>
-                <StoryCard story={story} />
-                {/* In the future, you could add Edit/Delete buttons here */}
+            {stories.map(story => (
+              <div key={story.id} className="relative">
+                {/* Edit/Delete buttons at top right, minimal style */}
+                <div className="absolute top-2 right-2 z-10 flex gap-1">
+                  <button
+                    onClick={() => handleDelete(story.id)}
+                    className="px-2 py-0.5 bg-white border border-red-200 text-red-600 rounded hover:bg-red-50 transition text-xs font-medium shadow-sm"
+                    title="Delete"
+                  >
+                    Delete
+                  </button>
+                </div>
+                <StoryCard story={story} onLikeChange={fetchStories} />
               </div>
             ))}
           </div>
