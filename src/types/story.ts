@@ -6,8 +6,11 @@ export type Story = {
   storyTitle: string;
   industry: string;
   previewText: string;
+  storyContent?: string;
   helpfulVotes: number;
   commentCount: number;
+  createdAt?: string;
+  location?: string;
 };
 
 export type StoryRequest = {
@@ -17,6 +20,7 @@ export type StoryRequest = {
   storyTitle: string;
   industry: string;
   previewText: string;
+  storyContent?: string;
   helpfulVotes: number;
   commentCount: number;
 };
@@ -29,6 +33,9 @@ export type StoryResponse = {
   storyTitle: string;
   industry: string;
   previewText: string;
+  storyContent?: string;
   helpfulVotes: number;
   commentCount: number;
+  createdAt?: string;
+  location?: string;
 };

@@ -1,30 +1,25 @@
 "use client";
 
-import { useAuth } from "@clerk/nextjs";
+import { useAuth as useClerkAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export function useAuthHandler() {
-  const { isSignedIn, isLoaded } = useAuth();
+export function useAuth() {
+  return useClerkAuth();
+}
+
+export function useNavigationWithLoading() {
   const router = useRouter();
-  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
-  const handleShareStory = () => {
-    if (!isLoaded) {
-      return;
-    }
-
-    if (isSignedIn) {
-      router.push("/share-story");
-    } else {
-      router.push("/sign-in?redirect_url=/share-story");
-    }
+  const navigateWithLoading = (href: string) => {
+    setIsNavigating(true);
+    router.push(href);
   };
 
   return {
-    isSignedIn,
-    isLoaded,
-    isSigningIn,
-    handleShareStory,
+    isNavigating,
+    navigateWithLoading,
+    setIsNavigating
   };
 } 

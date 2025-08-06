@@ -54,16 +54,16 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <body className={`${crimsonPro.variable} ${sourceSans3.variable} ${caveat.variable} font-sans bg-background-black text-primary`}>
-          <div className="gap-8">
+        <body className={`${crimsonPro.variable} ${sourceSans3.variable} ${caveat.variable} font-sans bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white min-h-screen`}>
+          <div className="flex flex-col min-h-screen">
             <NavBar />
+            <main className="flex-1">
+              <HealthGuard>
+                {children}
+              </HealthGuard>
+            </main>
+            <Footer />
           </div>
-          <main>
-            <HealthGuard>
-              {children}
-            </HealthGuard>
-          </main>
-          <Footer />
         </body>
       </html>
     </ClerkProvider>

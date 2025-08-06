@@ -1,64 +1,165 @@
 "use client";
 import React from "react";
-import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
-
-const content = [
-  {
-    title: "Learn from Real Failures",
-    description:
-      "Every failure shared is a roadmap for someone else. At FailForward, we believe transparency builds stronger founders. Discover real stories of what went wrong—and what you can avoid.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--rose-500),var(--pink-500))] text-white font-bold text-xl">
-        Raw, Real, and Relatable
-      </div>
-    ),
-  },
-  {
-    title: "No Filters. No Fakes.",
-    description:
-      "Tired of curated success stories? So are we. FailForward is where founders drop the facade and share what really happened—from product flops to founder fights.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--gray-800),var(--gray-600))] text-white font-bold text-xl">
-        Brutally Honest Insights
-      </div>
-    ),
-  },
-  {
-    title: "Empower Future Founders",
-    description:
-      "By sharing your journey, you light the way for others. Your failed startup might be someone else's billion-dollar pivot. FailForward turns hindsight into someone else's foresight.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--yellow-400),var(--amber-500))] text-white font-bold text-xl">
-        Fail. Share. Inspire.
-      </div>
-    ),
-  },
-  {
-    title: "Anonymity, Guaranteed",
-    description:
-      "Not ready to go public with your story? No problem. FailForward supports anonymous sharing so you can speak freely without fear. Your truth, your terms.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white font-bold text-xl">
-        Share Safely. Stay Anonymous.
-      </div>
-    ),
-  },
-  {
-    title: "Contact Us",
-    description:
-      "This is an open source project, feel free to contribute, or direct email me at shauryasha090@gmail.com",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white font-bold text-xl">
-        Let's Connect!.
-      </div>
-    ),
-  },
-];
+import Link from "next/link";
+import { Heart, Github, Mail, Twitter, Linkedin, Sparkles } from "lucide-react";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div className="w-full py-4">
-      <StickyScroll content={content} />
-    </div>
+    <footer className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 border-t border-white/10">
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center space-x-2 mb-6">
+              <Sparkles className="w-8 h-8 text-purple-400" />
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                FailForward
+              </h3>
+            </div>
+            <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
+              Learn from real startup failures. Share your story, help others avoid the same mistakes. 
+              Every setback is a stepping stone in disguise.
+            </p>
+            <div className="flex space-x-4">
+              <a
+                href="https://github.com/your-repo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="https://twitter.com/failforward"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="https://linkedin.com/company/failforward"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="mailto:shauryasha090@gmail.com"
+                className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-white font-semibold mb-6 text-lg">Quick Links</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link 
+                  href="/" 
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/see-stories" 
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                >
+                  Browse Stories
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/share-story" 
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                >
+                  Share Your Story
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/about" 
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                >
+                  About Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="text-white font-semibold mb-6 text-lg">Support</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link 
+                  href="/privacy" 
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/terms" 
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                >
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/contact" 
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                >
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <a 
+                  href="mailto:shauryasha090@gmail.com" 
+                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                >
+                  Email Support
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-white/10">
+        <div className="container mx-auto px-6 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-2 text-gray-400">
+              <span>© {currentYear} FailForward. Made with</span>
+              <Heart className="w-4 h-4 text-red-500 fill-current" />
+              <span>by the community</span>
+            </div>
+            <div className="text-gray-400 text-sm">
+              <span>Open source project. </span>
+              <a 
+                href="https://github.com/your-repo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-purple-400 hover:text-purple-300 transition-colors duration-300"
+              >
+                Contribute on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
