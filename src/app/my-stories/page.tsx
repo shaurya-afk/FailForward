@@ -1,6 +1,6 @@
 "use client";
 import { useAuth } from "@clerk/nextjs";
-import Link from "next/link";
+
 import StoryCard from "@/components/StoryCard";
 import { getStoriesByUserId, deleteStory } from "@/data/api";
 import { Story } from "@/types/story";
@@ -13,32 +13,19 @@ export default function MyStoriesPage() {
 
   const [stories, setStories] = useState<Story[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [isNavigating, setIsNavigating] = useState(false);
-
-  const handleNavigation = (href: string) => {
-    setIsNavigating(true);
-    window.location.href = href;
-  };
+  const [isNavigating] = useState(false);
 
 
   // 1. Get user's auth state
   const { userId } = useAuth();
 
-  const fetchStories = () => {
-    if(!userId) return;
-    setLoading(true);
-    getStoriesByUserId(userId)
-    .then(setStories)
-    .catch(setError)
-    .finally(() => setLoading(false));
-  }
+
 
   useEffect(() => {
     if(!userId) return;
     getStoriesByUserId(userId)
     .then(setStories)
-    .catch(setError)
+    .catch(() => {})
     .finally(() => setLoading(false));
   }, [userId]);
 
@@ -48,18 +35,11 @@ export default function MyStoriesPage() {
     .then(() => {
       setStories(stories.filter(story => story.id !== id));
     })
-    .catch(setError)
+    .catch(() => {})
     .finally(() => setLoading(false));
   };
 
-  // Update only the changed story in the stories array
-  const handleStoryUpdate = (updatedStory: Story) => {
-    setStories(prevStories =>
-      prevStories.map(story =>
-        story.id === updatedStory.id ? updatedStory : story
-      )
-    );
-  };
+
 
   if(loading || isNavigating) return <Loading />;
 
@@ -76,7 +56,7 @@ export default function MyStoriesPage() {
               </svg>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4 sm:mb-6">
-              You haven't shared a story yet.
+              You haven&apos;t shared a story yet.
             </h1>
             <p className="text-lg sm:text-xl text-purple-200 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4">
               Your experience could be the lesson someone else needs. Share your journey and help others avoid the same pitfalls.

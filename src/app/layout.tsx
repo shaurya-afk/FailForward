@@ -53,7 +53,7 @@ export default function RootLayout({
         }
       }}
     >
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={`${crimsonPro.variable} ${sourceSans3.variable} ${caveat.variable} font-sans bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white min-h-screen`}>
           <div className="flex flex-col min-h-screen">
             <NavBar />

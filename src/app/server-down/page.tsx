@@ -8,7 +8,7 @@ export default function ServerDownPage() {
             </svg>
             <h1 className="text-4xl font-bold mb-4 text-primary">Our Story Hit a Bump!</h1>
             <p className="text-lg text-secondary-200 mb-6 max-w-xl">
-                Even the best founders face setbacks. Our server is currently down, but just like every great story, we'll be back stronger!<br/>
+                Even the best founders face setbacks. Our server is currently down, but just like every great story, we&apos;ll be back stronger!<br/>
                 In the meantime, reflect on your journey—every failure is a lesson in disguise.
             </p>
             <button

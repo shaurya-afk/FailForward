@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Sparkles, Github, Mail, Linkedin } from "lucide-react";
-import Link from "next/link";
+import { Sparkles, Github, Mail, Linkedin, Globe } from "lucide-react";
 import { useState } from "react";
 import Loading from "@/components/Loading";
 
@@ -48,7 +47,7 @@ export default function About() {
                 Every startup failure contains valuable lessons that can prevent others from making the same mistakes.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                FailForward is more than just a platform—it's a community of entrepreneurs who believe in transparency, 
+                FailForward is more than just a platform—it&apos;s a community of entrepreneurs who believe in transparency, 
                 learning from each other, and building a stronger startup ecosystem through shared experiences.
               </p>
             </div>
@@ -98,11 +97,11 @@ export default function About() {
                   <p className="text-lg text-gray-300 leading-relaxed mb-6">
                     A backend-focused developer passionate about building performant APIs, scalable systems, and developer-friendly tools. 
                     With expertise in <span className="text-purple-400 font-semibold">Spring Boot, Java, and distributed systems</span>, 
-                    I've worked on projects ranging from hospital management systems to AI-powered bots and event-based microservices.
+                    I&apos;ve worked on projects ranging from hospital management systems to AI-powered bots and event-based microservices.
                   </p>
                   <div className="flex space-x-4">
                     <a
-                      href="https://github.com/your-username"
+                      href="https://github.com/shaurya-afk"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
@@ -116,12 +115,20 @@ export default function About() {
                       <Mail className="w-5 h-5" />
                     </a>
                     <a
-                      href="https://linkedin.com/in/your-profile"
+                      href="https://linkedin.com/in/shaurya-afk"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
                     >
                       <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://shauryasha.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
+                    >
+                      <Globe className="w-5 h-5" />
                     </a>
                   </div>
                 </div>

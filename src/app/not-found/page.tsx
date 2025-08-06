@@ -11,8 +11,8 @@ export default function NotFoundPage() {
       </svg>
       <h1 className="text-4xl font-bold mb-4 text-primary">Lost in the Startup Wilderness?</h1>
       <p className="text-lg text-secondary-200 mb-6 max-w-xl">
-        The page you're looking for doesn't exist. But remember, every wrong turn is just another lesson on the founder's journey.<br/>
-        Let's get you back on track!
+        The page you&apos;re looking for doesn&apos;t exist. But remember, every wrong turn is just another lesson on the founder&apos;s journey.<br/>
+        Let&apos;s get you back on track!
       </p>
       <button
         onClick={() => router.push("/")}

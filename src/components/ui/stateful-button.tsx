@@ -1,11 +1,11 @@
 "use client";
 import { cn } from "@/lib/utils";
 import React, { useEffect } from "react";
-import { motion, AnimatePresence, useAnimate } from "motion/react";
+import { motion, useAnimate } from "motion/react";
 
 type ButtonStatus = "idle" | "loading" | "success";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onAnimationStart' | 'onAnimationEnd'> {
   className?: string;
   children: React.ReactNode;
   status?: ButtonStatus;
@@ -32,57 +32,7 @@ export const Button = ({ className, children, status = "idle", ...props }: Butto
     runAnimation();
   }, [status, animate]);
 
-  const animateLoading = async () => {
-    await animate(
-      ".loader",
-      {
-        width: "20px",
-        scale: 1,
-        display: "block",
-      },
-      {
-        duration: 0.2,
-      },
-    );
-  };
 
-  const animateSuccess = async () => {
-    await animate(
-      ".loader",
-      {
-        width: "0px",
-        scale: 0,
-        display: "none",
-      },
-      {
-        duration: 0.2,
-      },
-    );
-    await animate(
-      ".check",
-      {
-        width: "20px",
-        scale: 1,
-        display: "block",
-      },
-      {
-        duration: 0.2,
-      },
-    );
-
-    await animate(
-      ".check",
-      {
-        width: "0px",
-        scale: 0,
-        display: "none",
-      },
-      {
-        delay: 2,
-        duration: 0.2,
-      },
-    );
-  };
 
 //   const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
 //     await animateLoading();
@@ -90,14 +40,7 @@ export const Button = ({ className, children, status = "idle", ...props }: Butto
 //     await animateSuccess();
 //   };
 
-  const {
-    onDrag,
-    onDragStart,
-    onDragEnd,
-    onAnimationStart,
-    onAnimationEnd,
-    ...buttonProps
-  } = props;
+  const buttonProps = props;
 
   return (
     <motion.button

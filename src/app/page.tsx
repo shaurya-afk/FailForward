@@ -1,19 +1,15 @@
 "use client";
 
-import Link from 'next/link';
-import StoryCard from '@/components/StoryCard';
 import { useAuth } from '@/hooks/useAuth';
 import { LoadingButton } from '@/components/ui/loading-button';
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 import { Story } from '@/types/story';
 import { checkHealth, getAllStories } from '@/data/api';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Loading from '@/components/Loading';
 import { WavyBackground } from '@/components/ui/wavy-background';
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 import { Sparkles } from 'lucide-react';
-import About from './about/page';
 
 export default function Home() {
   const router = useRouter();
@@ -22,13 +18,10 @@ export default function Home() {
 
   const [health, setHealth] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [isNavigating, setIsNavigating] = useState(false);
-  const { isSignedIn, isLoaded } = useAuth();
+  const [isNavigating] = useState(false);
+  const { isSignedIn } = useAuth();
 
-  const handleNavigation = (href: string) => {
-    setIsNavigating(true);
-    router.push(href);
-  };
+
 
   useEffect(() => {
     checkHealth()
@@ -44,7 +37,7 @@ export default function Home() {
   }, [loading, health, router]);
 
 
-  const fetchStories = () => {
+  const fetchStories = useCallback(() => {
     setLoading(true);
     getAllStories()
       .then(setStories)
@@ -56,11 +49,11 @@ export default function Home() {
         }
       })
       .finally(() => setLoading(false))
-  };
+  }, [router]);
 
   useEffect(() => {
     fetchStories();
-  }, []);
+  }, [fetchStories]);
 
   if (loading || isNavigating) return <Loading />;
 
@@ -72,7 +65,7 @@ export default function Home() {
           {/* Hero Section*/}
           <div className="container mx-auto px-6 py-24 text-center">
             <h1 className="text-4xl md:text-6xl font-serif font-bold leading-tight animate-fade-in-up bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              Your failure is someone's lesson.
+              Your failure is someone&apos;s lesson.
             </h1>
             <p className="mt-6 text-xl text-purple-200 max-w-3xl mx-auto animate-fade-in-up animation-delay-200 leading-relaxed">
               Share your story, help others avoid the same mistakes. We believe every setback is a stepping stone in disguise.

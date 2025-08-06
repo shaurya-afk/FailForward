@@ -3,7 +3,7 @@ import { Story } from '@/types/story';
 // Our "dummy" data. In the future, this will come from our database.
 export const dummyStories: Story[] = [
     {
-        id: '1',
+        id: 1,
         userId: 'user_2a3f...',
         founderName: 'Jane Doe',
         isAnonymous: false,
@@ -14,7 +14,7 @@ export const dummyStories: Story[] = [
         commentCount: 14,
     },
     {
-        id: '2',
+        id: 2,
         userId: 'user_2a3f...',
         founderName: 'John Smith',
         isAnonymous: true,
@@ -25,7 +25,7 @@ export const dummyStories: Story[] = [
         commentCount: 32,
     },
     {
-        id: '3',
+        id: 3,
         userId: 'user_2a3f...',
         founderName: 'Alex Ray',
         isAnonymous: false,
@@ -36,7 +36,7 @@ export const dummyStories: Story[] = [
         commentCount: 21,
     },
     {
-        id: '4',
+        id: 4,
         userId: 'user_2a3f...',
         founderName: 'Jane Doe',
         isAnonymous: false,
@@ -47,7 +47,7 @@ export const dummyStories: Story[] = [
         commentCount: 14,
     },
     {
-        id: '5',
+        id: 5,
         userId: 'user_2a3f...',
         founderName: 'John Smith',
         isAnonymous: true,
@@ -58,7 +58,7 @@ export const dummyStories: Story[] = [
         commentCount: 32,
     },
     {
-        id: '6',
+        id: 6,
         userId: 'user_2a3f...',
         founderName: 'Alex Ray',
         isAnonymous: false,

@@ -12,7 +12,7 @@ export function Footer() {
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
               <Sparkles className="w-8 h-8 text-purple-400" />
               <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -25,7 +25,7 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/your-repo"
+                href="https://github.com/shaurya-afk/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
@@ -33,7 +33,7 @@ export function Footer() {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://twitter.com/failforward"
+                href="https://x.com/shauryadotafk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
@@ -41,7 +41,7 @@ export function Footer() {
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com/company/failforward"
+                href="https://linkedin.com/shaurya-afk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-purple-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
@@ -58,7 +58,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="lg:col-span-2 lg:col-start-3">
             <h4 className="text-white font-semibold mb-6 text-lg">Quick Links</h4>
             <ul className="space-y-3">
               <li>
@@ -95,45 +95,6 @@ export function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Support */}
-          <div>
-            <h4 className="text-white font-semibold mb-6 text-lg">Support</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link 
-                  href="/privacy" 
-                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/terms" 
-                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
-                >
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/contact" 
-                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
-                >
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <a 
-                  href="mailto:shauryasha090@gmail.com" 
-                  className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
-                >
-                  Email Support
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
 
@@ -144,12 +105,12 @@ export function Footer() {
             <div className="flex items-center space-x-2 text-gray-400">
               <span>© {currentYear} FailForward. Made with</span>
               <Heart className="w-4 h-4 text-red-500 fill-current" />
-              <span>by the community</span>
+              <span>by Shaurya Sharma</span>
             </div>
             <div className="text-gray-400 text-sm">
               <span>Open source project. </span>
               <a 
-                href="https://github.com/your-repo" 
+                href="https://github.com/shaurya-afk/FailForward" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-purple-400 hover:text-purple-300 transition-colors duration-300"

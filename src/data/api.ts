@@ -1,5 +1,6 @@
 import { Story } from "@/types/story";
 import { StoryRequest, StoryResponse } from "@/types/story";
+import { Comment } from "@/types/comment";
 
 const BASE_URL = "https://failforward-backend.onrender.com";
 
@@ -17,7 +18,7 @@ export async function checkHealth(): Promise<boolean> {
         if (!res.ok) return false;
         const data = await res.json();
         return data.status === "UP";
-    } catch (e) {
+    } catch {
         return false;
     }
 }
@@ -212,7 +213,7 @@ export async function addComment(commentRequest: {
     commenterName?: string;
     isAnonymous: boolean;
     content: string;
-}): Promise<any> {
+}): Promise<Comment> {
     try {
         const res = await fetch(`${BASE_URL}/api/comments`, {
             method: 'POST',
@@ -221,7 +222,6 @@ export async function addComment(commentRequest: {
         });
         
         if (!res.ok) {
-            const errorText = await res.text();
             throw new ApiError(`Failed to add comment. Status: ${res.status}`, res.status);
         }
         
@@ -234,7 +234,7 @@ export async function addComment(commentRequest: {
     }
 }
 
-export async function getCommentsByStoryId(storyId: number): Promise<any[]> {
+export async function getCommentsByStoryId(storyId: number): Promise<Comment[]> {
     try {
         const res = await fetch(`${BASE_URL}/api/comments/story/${storyId}`, {
             method: 'GET',

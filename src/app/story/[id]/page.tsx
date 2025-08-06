@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { ArrowLeft, Heart, Share2, User, Calendar, MapPin, Building, Sparkles, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Heart, Share2, User, Building } from 'lucide-react';
 import { Story } from '@/types/story';
 import { getAllStories, likeStory, unlikeStory, hasUserLiked } from '@/data/api';
 import { useUser } from '@clerk/nextjs';

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Comment as CommentType } from '@/types/comment';
 import { getCommentsByStoryId } from '@/data/api';
 import Comment from './Comment';
@@ -10,12 +10,12 @@ interface CommentsSectionProps {
   initialCommentCount?: number;
 }
 
-export default function CommentsSection({ storyId, initialCommentCount = 0 }: CommentsSectionProps) {
+export default function CommentsSection({ storyId }: CommentsSectionProps) {
   const [comments, setComments] = useState<CommentType[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -27,11 +27,11 @@ export default function CommentsSection({ storyId, initialCommentCount = 0 }: Co
     } finally {
       setLoading(false);
     }
-  };
+  }, [storyId]);
 
   useEffect(() => {
     fetchComments();
-  }, [storyId]);
+  }, [fetchComments]);
 
   const handleCommentAdded = () => {
     // Refresh comments after adding a new one

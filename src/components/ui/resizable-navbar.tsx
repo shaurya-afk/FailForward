@@ -9,6 +9,8 @@ import {
 } from "motion/react";
 
 import React, { useRef, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 
 interface NavbarProps {
@@ -195,7 +197,6 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
@@ -232,18 +233,18 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <a
+    <Link
       href="/"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-      <img
+      <Image
         src="https://assets.aceternity.com/logo-dark.png"
         alt="logo"
         width={30}
         height={30}
       />
       <span className="font-medium text-black dark:text-white">FailForward</span>
-    </a>
+    </Link>
   );
 };
 

@@ -17,7 +17,7 @@ export default function ShareStoryPage() {
   const [commentCount] = useState(0); // default to 0
 
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
+
   const [loading, setLoading] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
   const router = useRouter();
@@ -29,7 +29,6 @@ export default function ShareStoryPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setSuccess(false);
 
     if (!userId) {
       setError("You must be signed in to submit a story.");
@@ -53,7 +52,6 @@ export default function ShareStoryPage() {
 
     try {
       await addStory(story);
-      setSuccess(true);
       setTitle("");
       setIndustry("");
       setPreviewText("");
@@ -62,8 +60,8 @@ export default function ShareStoryPage() {
       // Redirect to see-stories after successful post
       setIsNavigating(true);
       router.push("/see-stories");
-    } catch (error: any) {
-      setError(error?.message || "Failed to submit story. Please try again.");
+    } catch (error: unknown) {
+      setError(error instanceof Error ? error.message : "Failed to submit story. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -202,8 +200,8 @@ export default function ShareStoryPage() {
                   </div>
                 </div>
                 <p className="mt-4 text-sm text-purple-300 bg-purple-500/10 p-4 rounded-xl border border-purple-500/20">
-                  💡 <strong>Privacy Tip:</strong> If you check "Post anonymously", your name won't be displayed even if you enter it. 
-                  If you leave the name field blank, it will be posted as "Anonymous".
+                  💡 <strong>Privacy Tip:</strong> If you check &quot;Post anonymously&quot;, your name won&apos;t be displayed even if you enter it. 
+                  If you leave the name field blank, it will be posted as &quot;Anonymous&quot;.
                 </p>
               </div>
 

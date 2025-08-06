@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { addComment } from '@/data/api';
-import { Send, Eye, EyeOff, User } from 'lucide-react';
+import { Send, Eye, EyeOff } from 'lucide-react';
 
 interface CommentFormProps {
   storyId: number;

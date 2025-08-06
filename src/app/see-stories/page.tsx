@@ -1,7 +1,7 @@
 "use client";
 
 import StoryCard from '@/components/StoryCard';
-import Link from 'next/link';
+
 import { getAllStories } from '@/data/api';
 import { useEffect, useState } from 'react';
 import { Story } from '@/types/story';
@@ -15,7 +15,7 @@ export default function SeeStoriesPage() {
   const [filteredStories, setFilteredStories] = useState<Story[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedIndustry, setSelectedIndustry] = useState('all');
-  const [isNavigating, setIsNavigating] = useState(false);
+  const [isNavigating] = useState(false);
 
   const fetchStories = () => {
     setLoading(true);
@@ -50,10 +50,7 @@ export default function SeeStoriesPage() {
 
   const industries = ['all', ...Array.from(new Set(stories.map(story => story.industry)))];
 
-  const handleNavigation = (href: string) => {
-    setIsNavigating(true);
-    window.location.href = href;
-  };
+
 
   if (loading || isNavigating) {
     return (
@@ -104,7 +101,7 @@ export default function SeeStoriesPage() {
               <Sparkles className="w-8 h-8 text-cyan-400 animate-pulse" />
             </div>
             <p className="text-xl text-purple-200 max-w-3xl mx-auto animate-fade-in-up animation-delay-200 leading-relaxed">
-              Discover real experiences from entrepreneurs who've been through the trenches. 
+              Discover real experiences from entrepreneurs who&apos;ve been through the trenches. 
               Every story is a lesson waiting to be learned.
             </p>
           </div>
