@@ -95,7 +95,7 @@ export function NavBar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-gray-300 hover:text-purple-400 transition-colors duration-300"
+            className="md:hidden p-3 text-gray-300 hover:text-purple-400 transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -106,20 +106,20 @@ export function NavBar() {
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="py-4 space-y-4 border-t border-white/10">
+          <div className="py-6 space-y-6 border-t border-white/10">
             {navItems.map((item) => (
               <LoadingButton
                 key={item.name}
                 href={item.href}
                 variant="default"
-                className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium"
+                className="block w-full text-center py-3 px-4 text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium text-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
               </LoadingButton>
             ))}
             
-            <div className="pt-4 space-y-3 border-t border-white/10">
+            <div className="pt-6 space-y-4 border-t border-white/10">
               <SignedIn>
                 <div className="flex items-center justify-center py-2">
                   <UserButton 
@@ -134,7 +134,7 @@ export function NavBar() {
                 <LoadingButton
                   href="/my-stories"
                   variant="outline"
-                  className="block w-full text-center px-4 py-2 text-purple-400 border border-purple-400 rounded-lg hover:bg-purple-400 hover:text-white transition-all duration-300"
+                  className="block w-full text-center px-4 py-3 text-purple-400 border border-purple-400 rounded-lg hover:bg-purple-400 hover:text-white transition-all duration-300 text-lg"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   My Stories
@@ -144,7 +144,7 @@ export function NavBar() {
                 <LoadingButton
                   href="/sign-in"
                   variant="default"
-                  className="block text-gray-300 hover:text-purple-400 transition-colors duration-300 text-center"
+                  className="block w-full text-center py-3 px-4 text-gray-300 hover:text-purple-400 transition-colors duration-300 text-lg"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Sign In
@@ -152,7 +152,7 @@ export function NavBar() {
                 <LoadingButton
                   href="/sign-up"
                   variant="gradient"
-                  className="block w-full text-center px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+                  className="block w-full text-center px-4 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 text-lg"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Sign Up
